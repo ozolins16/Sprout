@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Register — Sprout{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+    <h1>Create an account</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="form-row">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}<small>{{ field.help_text|safe }}</small>{% endif %}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="button">Register</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
+</section>
+{% endblock %}

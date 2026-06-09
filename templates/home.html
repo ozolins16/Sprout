@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Sprout — Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to Sprout</h1>
+    <p>Appointment booking for small beauty businesses.</p>
+    {% if not user.is_authenticated %}
+        <p>
+            <a class="button" href="{% url 'accounts:register' %}">Get started</a>
+            <a class="button button-secondary" href="{% url 'accounts:login' %}">Login</a>
+        </p>
+    {% else %}
+        <p>Hello, {{ user.first_name|default:user.username }}.</p>
+    {% endif %}
+</section>
+{% endblock %}
