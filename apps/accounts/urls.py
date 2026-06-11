@@ -6,7 +6,8 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path('register/', views.RegisterView.as_view(), name='register'),
+    path('register/', views.ClientRegisterView.as_view(), name='register'),
+    path('register/owner/', views.OwnerRegisterView.as_view(), name='register_owner'),
     path(
         'login/',
         auth_views.LoginView.as_view(template_name='accounts/login.html'),

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Services — {{ business.name }}{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="dashboard-header">
+        <h1>Services</h1>
+        <a class="button" href="{% url 'businesses:service_create' %}">+ New service</a>
+    </div>
+
+    {% if services %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Duration</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                    <tr>
+                        <td>{{ service.name }}</td>
+                        <td>£{{ service.price }}</td>
+                        <td>{{ service.duration_minutes }} min</td>
+                        <td class="row-actions">
+                            <a href="{% url 'businesses:service_update' service.pk %}">Edit</a>
+                            <a class="danger-link" href="{% url 'businesses:service_delete' service.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No services yet.</p>
+    {% endif %}
+
+    <p><a href="{% url 'businesses:dashboard' %}">&larr; Back to dashboard</a></p>
+</section>
+{% endblock %}

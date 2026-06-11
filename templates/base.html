@@ -14,6 +14,9 @@
             <nav class="site-nav">
                 <a href="{% url 'home' %}">Home</a>
                 {% if user.is_authenticated %}
+                    {% if user.is_owner %}
+                        <a href="{% url 'businesses:dashboard' %}">Dashboard</a>
+                    {% endif %}
                     <span class="user-label">{{ user.username }} ({{ user.get_role_display }})</span>
                     <form method="post" action="{% url 'accounts:logout' %}" class="inline-form">
                         {% csrf_token %}

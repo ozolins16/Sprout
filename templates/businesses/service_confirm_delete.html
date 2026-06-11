@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete {{ service.name }} — Sprout{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+    <h1>Delete service</h1>
+    <p>Are you sure you want to delete <strong>{{ service.name }}</strong>?</p>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <button type="submit" class="button danger">Delete</button>
+        <a class="button button-secondary" href="{% url 'businesses:service_list' %}">Cancel</a>
+    </form>
+</section>
+{% endblock %}

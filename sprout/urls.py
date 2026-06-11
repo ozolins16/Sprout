@@ -6,5 +6,6 @@ from apps.accounts.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('apps.accounts.urls')),
+    path('dashboard/', include('apps.businesses.urls')),
     path('', home, name='home'),
 ]
