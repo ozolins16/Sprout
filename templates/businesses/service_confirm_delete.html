@@ -1,15 +1,16 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Delete {{ service.name }} — Sprout{% endblock %}
+{% block title %}{% blocktrans with name=service.name %}Delete {{ name }}{% endblocktrans %} — Appointment Booking{% endblock %}
 
 {% block content %}
 <section class="auth-card">
-    <h1>Delete service</h1>
-    <p>Are you sure you want to delete <strong>{{ service.name }}</strong>?</p>
+    <h1>{% trans "Delete service" %}</h1>
+    <p>{% blocktrans with name=service.name %}Are you sure you want to delete <strong>{{ name }}</strong>?{% endblocktrans %}</p>
     <form method="post" novalidate>
         {% csrf_token %}
-        <button type="submit" class="button danger">Delete</button>
-        <a class="button button-secondary" href="{% url 'businesses:service_list' %}">Cancel</a>
+        <button type="submit" class="button danger">{% trans "Delete" %}</button>
+        <a class="button button-secondary" href="{% url 'businesses:service_list' %}">{% trans "Cancel" %}</a>
     </form>
 </section>
 {% endblock %}

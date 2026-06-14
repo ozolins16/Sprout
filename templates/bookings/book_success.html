@@ -1,0 +1,21 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Booking confirmed" %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+    <h1>{% trans "Booking confirmed" %}</h1>
+    <p>{% trans "You're booked in." %}</p>
+    <ul class="confirm-list">
+        <li><strong>{% trans "Service:" %}</strong> {{ appointment.service.name }}</li>
+        <li><strong>{% trans "Staff:" %}</strong> {{ appointment.staff.user.get_full_name|default:appointment.staff.user.username }}</li>
+        <li><strong>{% trans "Business:" %}</strong> {{ appointment.staff.business.name }}</li>
+        <li><strong>{% trans "When:" %}</strong> {{ appointment.start_datetime|date:"l, j F Y" }} {% trans "at" context "time" %} {{ appointment.start_datetime|time:"H:i" }}</li>
+    </ul>
+    <p>
+        <a class="button" href="{% url 'bookings:client_bookings' %}">{% trans "View my bookings" %}</a>
+        <a class="button button-secondary" href="{% url 'home' %}">{% trans "Back home" %}</a>
+    </p>
+</section>
+{% endblock %}

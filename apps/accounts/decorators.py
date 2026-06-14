@@ -15,3 +15,16 @@ def owner_required(view_func):
         return view_func(request, *args, **kwargs)
 
     return _wrapped
+
+
+def staff_required(view_func):
+    """Allow only authenticated users whose role is 'staff'."""
+
+    @wraps(view_func)
+    @login_required
+    def _wrapped(request, *args, **kwargs):
+        if not request.user.is_staff_member:
+            raise PermissionDenied
+        return view_func(request, *args, **kwargs)
+
+    return _wrapped

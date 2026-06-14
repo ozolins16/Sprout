@@ -1,0 +1,25 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Confirm booking" %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+    <h1>{% trans "Confirm booking" %}</h1>
+    <ul class="confirm-list">
+        <li><strong>{% trans "Service:" %}</strong> {{ service.name }} ({% blocktrans with minutes=service.duration_minutes %}{{ minutes }} min{% endblocktrans %})</li>
+        <li><strong>{% trans "Price:" %}</strong> £{{ service.price }}</li>
+        <li><strong>{% trans "Staff:" %}</strong> {{ staff.user.get_full_name|default:staff.user.username }}</li>
+        <li><strong>{% trans "Business:" %}</strong> {{ business.name }}</li>
+        <li><strong>{% trans "When:" %}</strong> {{ start_dt|date:"l, j F Y" }} {% trans "at" context "time" %} {{ start_dt|time:"H:i" }}</li>
+    </ul>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="date" value="{{ date }}">
+        <input type="hidden" name="time" value="{{ time }}">
+        <button type="submit" class="button">{% trans "Confirm booking" %}</button>
+        <a class="button button-secondary"
+           href="{% url 'bookings:book_datetime' business.id service.id staff.id %}">{% trans "Cancel" %}</a>
+    </form>
+</section>
+{% endblock %}

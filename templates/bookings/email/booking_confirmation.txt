@@ -1,0 +1,13 @@
+Hi {{ appointment.client.first_name|default:appointment.client.username }},
+
+Your booking is confirmed.
+
+Service:  {{ appointment.service.name }} ({{ appointment.service.duration_minutes }} min)
+Price:    £{{ appointment.service.price }}
+Staff:    {{ appointment.staff.user.get_full_name|default:appointment.staff.user.username }}
+Business: {{ appointment.staff.business.name }}
+When:     {{ appointment.start_datetime|date:"l, j F Y" }} at {{ appointment.start_datetime|time:"H:i" }}
+
+You can view or cancel this booking from your account at any time.
+
+— Appointment Booking

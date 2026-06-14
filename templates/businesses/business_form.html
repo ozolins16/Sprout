@@ -1,11 +1,12 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Create your business — Sprout{% endblock %}
+{% block title %}{% trans "Create your business" %} — Appointment Booking{% endblock %}
 
 {% block content %}
 <section class="auth-card">
-    <h1>Create your business</h1>
-    <p class="muted">Pick a category — a starter set of services will be added automatically.</p>
+    <h1>{% trans "Create your business" %}</h1>
+    <p class="muted">{% trans "Pick a category — a starter set of services will be added automatically." %}</p>
     <form method="post" novalidate>
         {% csrf_token %}
         {{ form.non_field_errors }}
@@ -16,7 +17,7 @@
                 {{ field.errors }}
             </div>
         {% endfor %}
-        <button type="submit" class="button">Create business</button>
+        <button type="submit" class="button">{% trans "Create business" %}</button>
     </form>
 </section>
 {% endblock %}

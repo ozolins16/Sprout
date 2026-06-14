@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Booking confirmed</title></head>
+<body style="font-family: -apple-system, Segoe UI, Roboto, sans-serif; color: #1f2933; max-width: 520px; margin: 0 auto; padding: 1.5rem;">
+    <h1 style="color: #2f8f5a;">Booking confirmed</h1>
+    <p>Hi {{ appointment.client.first_name|default:appointment.client.username }},</p>
+    <p>Your booking has been confirmed.</p>
+    <table cellpadding="6" style="border-collapse: collapse; width: 100%;">
+        <tr><td><strong>Service</strong></td><td>{{ appointment.service.name }} ({{ appointment.service.duration_minutes }} min)</td></tr>
+        <tr><td><strong>Price</strong></td><td>£{{ appointment.service.price }}</td></tr>
+        <tr><td><strong>Staff</strong></td><td>{{ appointment.staff.user.get_full_name|default:appointment.staff.user.username }}</td></tr>
+        <tr><td><strong>Business</strong></td><td>{{ appointment.staff.business.name }}</td></tr>
+        <tr><td><strong>When</strong></td><td>{{ appointment.start_datetime|date:"l, j F Y" }} at {{ appointment.start_datetime|time:"H:i" }}</td></tr>
+    </table>
+    <p style="color: #6b7280; font-size: 0.9rem;">You can view or cancel this booking from your account at any time.</p>
+    <p style="color: #6b7280; font-size: 0.9rem;">— Appointment Booking</p>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My appointments" %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <h1>{% trans "My appointments" %}</h1>
+    <p class="muted">{{ staff.business.name }}</p>
+
+    <h2>{% trans "Upcoming" %}</h2>
+    {% if upcoming %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>{% trans "When" %}</th>
+                    <th>{% trans "Service" %}</th>
+                    <th>{% trans "Client" %}</th>
+                    <th>{% trans "Status" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in upcoming %}
+                    <tr>
+                        <td>{{ a.start_datetime|date:"D, j M Y" }} {% trans "at" context "time" %} {{ a.start_datetime|time:"H:i" }}</td>
+                        <td>{{ a.service.name }} ({% blocktrans with minutes=a.service.duration_minutes %}{{ minutes }} min{% endblocktrans %})</td>
+                        <td>{{ a.client.get_full_name|default:a.client.username }}</td>
+                        <td>
+                            <span class="status status-{{ a.status }}">{{ a.get_status_display }}</span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "No upcoming appointments." %}</p>
+    {% endif %}
+
+    <h2 style="margin-top:2rem;">{% trans "Recent past" %}</h2>
+    {% if past %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>{% trans "When" %}</th>
+                    <th>{% trans "Service" %}</th>
+                    <th>{% trans "Client" %}</th>
+                    <th>{% trans "Status" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in past %}
+                    <tr>
+                        <td>{{ a.start_datetime|date:"D, j M Y" }} {% trans "at" context "time" %} {{ a.start_datetime|time:"H:i" }}</td>
+                        <td>{{ a.service.name }}</td>
+                        <td>{{ a.client.get_full_name|default:a.client.username }}</td>
+                        <td>
+                            <span class="status status-{{ a.status }}">{{ a.get_status_display }}</span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "No past appointments." %}</p>
+    {% endif %}
+
+    <p><a href="{% url 'staff:dashboard' %}">&larr; {% trans "Back to my area" %}</a></p>
+</section>
+{% endblock %}

@@ -1,0 +1,19 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My area" %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <h1>{% blocktrans with name=user.first_name|default:user.username %}Hi, {{ name }}{% endblocktrans %}</h1>
+    {% if staff %}
+        <p class="muted">{% blocktrans with business=staff.business.name %}You work at <strong>{{ business }}</strong>.{% endblocktrans %}</p>
+        <ul class="dashboard-links">
+            <li><a class="button" href="{% url 'staff:appointments' %}">{% trans "My appointments" %}</a></li>
+            <li><a class="button button-secondary" href="{% url 'staff:schedule' %}">{% trans "My schedule" %}</a></li>
+        </ul>
+    {% else %}
+        <p class="muted">{% trans "No staff profile is linked to your account yet — ask the business owner." %}</p>
+    {% endif %}
+</section>
+{% endblock %}

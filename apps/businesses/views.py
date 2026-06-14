@@ -4,10 +4,15 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_http_methods
 
-from apps.accounts.decorators import owner_required
+from apps.accounts.decorators import owner_required, staff_required
 
-from .forms import BusinessForm, ServiceForm
-from .models import Business, Service, seed_default_services
+from .forms import (
+    BusinessForm,
+    ServiceForm,
+    StaffCreationForm,
+    StaffScheduleForm,
+)
+from .models import Business, Service, Staff, seed_default_services
 
 
 def _get_owner_business(user) -> Business | None:
@@ -115,4 +120,89 @@ def service_delete(request, pk: int):
         request,
         'businesses/service_confirm_delete.html',
         {'service': service},
+    )
+
+
+# --- Staff management (owner) ---
+
+@owner_required
+def staff_list(request):
+    business = _get_owner_business(request.user)
+    if business is None:
+        return redirect('businesses:business_create')
+    staff = business.staff.select_related('user').all()
+    return render(
+        request,
+        'businesses/staff_list.html',
+        {'business': business, 'staff_members': staff},
+    )
+
+
+@owner_required
+def staff_create(request):
+    business = _get_owner_business(request.user)
+    if business is None:
+        return redirect('businesses:business_create')
+
+    if request.method == 'POST':
+        form = StaffCreationForm(request.POST)
+        if form.is_valid():
+            form.save(business=business)
+            messages.success(request, _('Staff member added.'))
+            return redirect('businesses:staff_list')
+    else:
+        form = StaffCreationForm()
+
+    return render(request, 'businesses/staff_form.html', {'form': form})
+
+
+@owner_required
+@require_http_methods(['GET', 'POST'])
+def staff_delete(request, pk: int):
+    business = _get_owner_business(request.user)
+    staff = get_object_or_404(Staff, pk=pk, business=business)
+
+    if request.method == 'POST':
+        user = staff.user
+        staff.delete()
+        user.delete()
+        messages.success(request, _('Staff member removed.'))
+        return redirect('businesses:staff_list')
+
+    return render(
+        request,
+        'businesses/staff_confirm_delete.html',
+        {'staff': staff},
+    )
+
+
+# --- Staff self-service ---
+
+@staff_required
+def staff_dashboard(request):
+    staff = getattr(request.user, 'staff_profile', None)
+    return render(request, 'businesses/staff_dashboard.html', {'staff': staff})
+
+
+@staff_required
+def staff_schedule(request):
+    staff = getattr(request.user, 'staff_profile', None)
+    if staff is None:
+        # Edge case: staff role exists but no Staff record (manual admin tinkering)
+        messages.error(request, _('No staff profile is linked to your account.'))
+        return redirect('staff:dashboard')
+
+    if request.method == 'POST':
+        form = StaffScheduleForm(request.POST, request.FILES, instance=staff)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('Schedule updated.'))
+            return redirect('staff:schedule')
+    else:
+        form = StaffScheduleForm(instance=staff)
+
+    return render(
+        request,
+        'businesses/staff_schedule.html',
+        {'form': form, 'staff': staff},
     )

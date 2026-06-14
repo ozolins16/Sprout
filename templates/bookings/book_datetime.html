@@ -1,0 +1,31 @@
+﻿{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Pick a time" %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="booking">
+    <h1>{{ service.name }} {% trans "with" %} {{ staff.user.get_full_name|default:staff.user.username }}</h1>
+    <p class="muted">{% trans "Step 3 of 3 — pick a date and time" %}</p>
+
+    <div class="form-row">
+        <label for="date">{% trans "Date" %}</label>
+        <input type="date" id="date" name="date"
+               value="{{ today }}" min="{{ today }}" max="{{ max_date }}">
+    </div>
+
+    <div id="slots"
+         class="slot-grid"
+         data-api-url="{{ api_url }}"
+         data-confirm-url="{{ confirm_url }}"
+         data-loading-text="{% trans 'Loading…' %}"
+         data-no-slots-text="{% trans 'No available slots on that day.' %}"
+         data-error-text="{% trans 'Could not load slots. Try again.' %}">
+        <p class="muted">{% trans "Pick a date to see available slots." %}</p>
+    </div>
+
+    <p><a href="{% url 'bookings:book_staff' business.id service.id %}">&larr; {% trans "Back to staff" %}</a></p>
+</section>
+
+<script src="{% static 'js/booking.js' %}"></script>
+{% endblock %}

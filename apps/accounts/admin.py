@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import Group
 
 from .models import User
+
+# We don't use Django's built-in Group permission bundling — our role system on
+# the User model is enough — so hide it from /admin/ to keep the UI focused.
+admin.site.unregister(Group)
 
 
 @admin.register(User)

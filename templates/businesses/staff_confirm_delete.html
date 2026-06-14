@@ -1,0 +1,21 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Remove staff" %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+    <h1>{% trans "Remove staff member" %}</h1>
+    <p>
+        {% blocktrans with name=staff.user.get_full_name|default:staff.user.username %}
+        Are you sure you want to remove <strong>{{ name }}</strong>?
+        Their login account will also be deleted.
+        {% endblocktrans %}
+    </p>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <button type="submit" class="button danger">{% trans "Remove" %}</button>
+        <a class="button button-secondary" href="{% url 'businesses:staff_list' %}">{% trans "Cancel" %}</a>
+    </form>
+</section>
+{% endblock %}

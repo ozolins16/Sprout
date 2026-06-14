@@ -1,0 +1,62 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans "Appointment Booking admin" %}{% endblock %}
+
+{% block branding %}
+<div id="branding-row">
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">{% trans "Appointment Booking admin" %}</a>
+    </h1>
+    <form action="{% url 'set_language' %}" method="post" class="admin-lang-switcher">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.get_full_path }}">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% for lang_code, lang_name in LANGUAGES %}
+            <button type="submit"
+                    name="language"
+                    value="{{ lang_code }}"
+                    class="admin-lang-btn {% if lang_code == LANGUAGE_CODE %}active{% endif %}">
+                {{ lang_code|upper }}
+            </button>
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    #branding-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+    .admin-lang-switcher {
+        display: inline-flex;
+        gap: 0.25rem;
+        margin: 0;
+    }
+    .admin-lang-btn {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 4px;
+        padding: 0.15rem 0.55rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+        font: inherit;
+        line-height: 1.4;
+    }
+    .admin-lang-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    .admin-lang-btn.active {
+        background: #fff;
+        color: #417690;
+        font-weight: 700;
+    }
+</style>
+{% endblock %}

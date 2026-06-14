@@ -1,0 +1,26 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% blocktrans with name=business.name %}Book at {{ name }}{% endblocktrans %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="booking">
+    <h1>{% blocktrans with name=business.name %}Book at {{ name }}{% endblocktrans %}</h1>
+    <p class="muted">{% trans "Step 1 of 3 — pick a service" %}</p>
+
+    {% if services %}
+        <ul class="card-list">
+            {% for service in services %}
+                <li>
+                    <a class="card" href="{% url 'bookings:book_staff' business.id service.id %}">
+                        <span class="card-title">{{ service.name }}</span>
+                        <span class="card-meta">£{{ service.price }} · {% blocktrans with minutes=service.duration_minutes %}{{ minutes }} min{% endblocktrans %}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>{% trans "This business hasn't added any services yet." %}</p>
+    {% endif %}
+</section>
+{% endblock %}

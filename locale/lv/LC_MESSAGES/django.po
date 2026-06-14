@@ -1,0 +1,786 @@
+# Sprout — Latvian translation.
+# Copyright (C) 2026
+# This file is distributed under the same license as the Sprout package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Sprout 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-14 12:25+0300\n"
+"PO-Revision-Date: 2026-06-14 12:30+0300\n"
+"Last-Translator: Linards\n"
+"Language-Team: Latvian\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: .\apps\accounts\forms.py:12 .\apps\businesses\forms.py:45
+#: .\templates\businesses\staff_list.html:17
+msgid "Username"
+msgstr "Lietotājvārds"
+
+#: .\apps\accounts\forms.py:13 .\apps\businesses\forms.py:46
+msgid "Email"
+msgstr "E-pasts"
+
+#: .\apps\accounts\forms.py:14 .\apps\businesses\forms.py:47
+msgid "First name"
+msgstr "Vārds"
+
+#: .\apps\accounts\forms.py:15 .\apps\businesses\forms.py:48
+msgid "Last name"
+msgstr "Uzvārds"
+
+#: .\apps\accounts\models.py:8 .\templates\bookings\staff_appointments.html:18
+#: .\templates\bookings\staff_appointments.html:46
+msgid "Client"
+msgstr "Klients"
+
+#: .\apps\accounts\models.py:9 .\templates\bookings\client_bookings.html:16
+#: .\templates\businesses\staff_list.html:4
+#: .\templates\businesses\staff_list.html:9
+msgid "Staff"
+msgstr "Darbinieks"
+
+#: .\apps\accounts\models.py:10
+msgid "Owner"
+msgstr "Īpašnieks"
+
+#: .\apps\accounts\models.py:13
+msgid "role"
+msgstr "loma"
+
+#: .\apps\accounts\views.py:43
+msgid "Create a client account"
+msgstr "Izveidot klienta kontu"
+
+#: .\apps\accounts\views.py:49
+msgid "Register your business"
+msgstr "Reģistrēt savu uzņēmumu"
+
+#: .\apps\bookings\models.py:10
+msgid "Confirmed"
+msgstr "Apstiprināts"
+
+#: .\apps\bookings\models.py:11
+msgid "Cancelled"
+msgstr "Atcelts"
+
+#: .\apps\bookings\models.py:28
+msgid "start"
+msgstr "sākums"
+
+#: .\apps\bookings\models.py:30
+msgid "status"
+msgstr "statuss"
+
+#: .\apps\bookings\models.py:39
+msgid "appointment"
+msgstr "rezervācija"
+
+#: .\apps\bookings\models.py:40
+msgid "appointments"
+msgstr "rezervācijas"
+
+#: .\apps\bookings\views.py:112
+msgid "Sorry, that slot is no longer available."
+msgstr "Diemžēl šis laiks vairs nav pieejams."
+
+#: .\apps\bookings\views.py:172
+msgid "This booking is already cancelled."
+msgstr "Šī rezervācija jau ir atcelta."
+
+#: .\apps\bookings\views.py:174
+msgid "Past bookings cannot be cancelled."
+msgstr "Pagājušas rezervācijas nevar atcelt."
+
+#: .\apps\bookings\views.py:178
+msgid "Booking cancelled."
+msgstr "Rezervācija atcelta."
+
+#: .\apps\bookings\views.py:188 .\apps\businesses\views.py:192
+msgid "No staff profile is linked to your account."
+msgstr "Jūsu kontam nav pievienots darbinieka profils."
+
+#: .\apps\businesses\forms.py:16
+msgid "Business name"
+msgstr "Uzņēmuma nosaukums"
+
+#: .\apps\businesses\forms.py:17
+msgid "Category"
+msgstr "Kategorija"
+
+#: .\apps\businesses\forms.py:26
+msgid "Service name"
+msgstr "Pakalpojuma nosaukums"
+
+#: .\apps\businesses\forms.py:27 .\templates\businesses\service_list.html:18
+msgid "Price"
+msgstr "Cena"
+
+#: .\apps\businesses\forms.py:28
+msgid "Duration (minutes)"
+msgstr "Ilgums (minūtes)"
+
+#: .\apps\businesses\forms.py:34
+msgid "Duration must be a positive number of minutes."
+msgstr "Ilgumam jābūt pozitīvam minūšu skaitam."
+
+#: .\apps\businesses\forms.py:40
+msgid "Price cannot be negative."
+msgstr "Cena nedrīkst būt negatīva."
+
+#: .\apps\businesses\forms.py:49
+msgid "Password"
+msgstr "Parole"
+
+#: .\apps\businesses\forms.py:54
+msgid "A user with that username already exists."
+msgstr "Lietotājs ar šādu lietotājvārdu jau pastāv."
+
+#: .\apps\businesses\forms.py:79 .\templates\businesses\staff_list.html:19
+msgid "Working days"
+msgstr "Darba dienas"
+
+#: .\apps\businesses\forms.py:107
+msgid "End time must be later than start time."
+msgstr "Beigu laikam jābūt vēlākam par sākuma laiku."
+
+#: .\apps\businesses\models.py:9
+msgid "Monday"
+msgstr "Pirmdiena"
+
+#: .\apps\businesses\models.py:10
+msgid "Tuesday"
+msgstr "Otrdiena"
+
+#: .\apps\businesses\models.py:11
+msgid "Wednesday"
+msgstr "Trešdiena"
+
+#: .\apps\businesses\models.py:12
+msgid "Thursday"
+msgstr "Ceturtdiena"
+
+#: .\apps\businesses\models.py:13
+msgid "Friday"
+msgstr "Piektdiena"
+
+#: .\apps\businesses\models.py:14
+msgid "Saturday"
+msgstr "Sestdiena"
+
+#: .\apps\businesses\models.py:15
+msgid "Sunday"
+msgstr "Svētdiena"
+
+#: .\apps\businesses\models.py:22
+msgid "Barbershop"
+msgstr "Frizētava"
+
+#: .\apps\businesses\models.py:23
+msgid "Nail Salon"
+msgstr "Nagu salons"
+
+#: .\apps\businesses\models.py:25 .\apps\businesses\models.py:47
+msgid "name"
+msgstr "nosaukums"
+
+#: .\apps\businesses\models.py:27
+msgid "category"
+msgstr "kategorija"
+
+#: .\apps\businesses\models.py:39
+msgid "business"
+msgstr "uzņēmums"
+
+#: .\apps\businesses\models.py:40
+msgid "businesses"
+msgstr "uzņēmumi"
+
+#: .\apps\businesses\models.py:48
+msgid "price"
+msgstr "cena"
+
+#: .\apps\businesses\models.py:49
+msgid "duration (minutes)"
+msgstr "ilgums (minūtes)"
+
+#: .\apps\businesses\models.py:59
+msgid "service"
+msgstr "pakalpojums"
+
+#: .\apps\businesses\models.py:60
+msgid "services"
+msgstr "pakalpojumi"
+
+#: .\apps\businesses\models.py:70
+msgid "Haircut"
+msgstr "Matu griezums"
+
+#: .\apps\businesses\models.py:70
+msgid "Beard Trim"
+msgstr "Bārdas piegriezums"
+
+#: .\apps\businesses\models.py:70
+msgid "Hot Towel Shave"
+msgstr "Karstā dvieļa skūšana"
+
+#: .\apps\businesses\models.py:71
+msgid "Manicure"
+msgstr "Manikīrs"
+
+#: .\apps\businesses\models.py:71
+msgid "Pedicure"
+msgstr "Pedikīrs"
+
+#: .\apps\businesses\models.py:71
+msgid "Gel Extensions"
+msgstr "Gēla nagu pagarinājumi"
+
+#: .\apps\businesses\models.py:100
+msgid "bio"
+msgstr "apraksts"
+
+#: .\apps\businesses\models.py:102
+msgid "photo"
+msgstr "foto"
+
+#: .\apps\businesses\models.py:108
+msgid "working days"
+msgstr "darba dienas"
+
+#: .\apps\businesses\models.py:111
+msgid "Comma-separated day numbers: 0=Monday … 6=Sunday"
+msgstr "Ar komatu atdalīti dienu numuri: 0=Pirmdiena … 6=Svētdiena"
+
+#: .\apps\businesses\models.py:113
+msgid "start time"
+msgstr "sākuma laiks"
+
+#: .\apps\businesses\models.py:114
+msgid "end time"
+msgstr "beigu laiks"
+
+#: .\apps\businesses\models.py:117
+msgid "staff member"
+msgstr "darbinieks"
+
+#: .\apps\businesses\models.py:118
+msgid "staff"
+msgstr "darbinieki"
+
+#: .\apps\businesses\views.py:42
+msgid "Business created. Default services were added."
+msgstr "Uzņēmums izveidots. Pievienoti noklusētie pakalpojumi."
+
+#: .\apps\businesses\views.py:75
+msgid "Service created."
+msgstr "Pakalpojums izveidots."
+
+#: .\apps\businesses\views.py:96
+msgid "Service updated."
+msgstr "Pakalpojums atjaunināts."
+
+#: .\apps\businesses\views.py:116
+msgid "Service deleted."
+msgstr "Pakalpojums dzēsts."
+
+#: .\apps\businesses\views.py:151
+msgid "Staff member added."
+msgstr "Darbinieks pievienots."
+
+#: .\apps\businesses\views.py:169
+msgid "Staff member removed."
+msgstr "Darbinieks noņemts."
+
+#: .\apps\businesses\views.py:199
+msgid "Schedule updated."
+msgstr "Grafiks atjaunināts."
+
+#: .\templates\accounts\login.html:4 .\templates\accounts\login.html:8
+#: .\templates\accounts\login.html:19 .\templates\accounts\register.html:22
+#: .\templates\base.html:31
+msgid "Login"
+msgstr "Pieteikties"
+
+#: .\templates\accounts\login.html:21
+msgid "No account yet?"
+msgstr "Vēl nav konta?"
+
+#: .\templates\accounts\login.html:21 .\templates\accounts\register.html:4
+#: .\templates\accounts\register.html:20 .\templates\base.html:32
+msgid "Register"
+msgstr "Reģistrēties"
+
+#: .\templates\accounts\register.html:8
+msgid "Create an account"
+msgstr "Izveidot kontu"
+
+#: .\templates\accounts\register.html:22
+msgid "Already have an account?"
+msgstr "Jau ir konts?"
+
+#: .\templates\admin\base_site.html:4 .\templates\admin\base_site.html:9
+#, fuzzy
+#| msgid "Sprout"
+msgid "Sprout admin"
+msgstr "Sprout"
+
+#: .\templates\base.html:8
+msgid "Sprout"
+msgstr "Sprout"
+
+#: .\templates\base.html:16
+msgid "Home"
+msgstr "Sākums"
+
+#: .\templates\base.html:19 .\templates\businesses\dashboard.html:4
+msgid "Dashboard"
+msgstr "Vadības panelis"
+
+#: .\templates\base.html:21 .\templates\businesses\staff_dashboard.html:4
+msgid "My area"
+msgstr "Mana sadaļa"
+
+#: .\templates\base.html:23 .\templates\bookings\client_bookings.html:4
+#: .\templates\bookings\client_bookings.html:8
+msgid "My bookings"
+msgstr "Manas rezervācijas"
+
+#: .\templates\base.html:28
+msgid "Logout"
+msgstr "Iziet"
+
+#: .\templates\bookings\book_confirm.html:4
+#: .\templates\bookings\book_confirm.html:8
+#: .\templates\bookings\book_confirm.html:20
+msgid "Confirm booking"
+msgstr "Apstiprināt rezervāciju"
+
+#: .\templates\bookings\book_confirm.html:10
+#: .\templates\bookings\book_success.html:11
+msgid "Service:"
+msgstr "Pakalpojums:"
+
+#: .\templates\bookings\book_confirm.html:10
+#: .\templates\bookings\book_service.html:17
+#: .\templates\bookings\staff_appointments.html:26
+#: .\templates\businesses\service_list.html:28
+#, python-format
+msgid "%(minutes)s min"
+msgstr "%(minutes)s min"
+
+#: .\templates\bookings\book_confirm.html:11
+msgid "Price:"
+msgstr "Cena:"
+
+#: .\templates\bookings\book_confirm.html:12
+#: .\templates\bookings\book_success.html:12
+msgid "Staff:"
+msgstr "Darbinieks:"
+
+#: .\templates\bookings\book_confirm.html:13
+#: .\templates\bookings\book_success.html:13
+msgid "Business:"
+msgstr "Uzņēmums:"
+
+#: .\templates\bookings\book_confirm.html:14
+#: .\templates\bookings\book_success.html:14
+msgid "When:"
+msgstr "Kad:"
+
+#: .\templates\bookings\book_confirm.html:14
+#: .\templates\bookings\book_success.html:14
+#: .\templates\bookings\client_bookings.html:25
+#: .\templates\bookings\staff_appointments.html:25
+#: .\templates\bookings\staff_appointments.html:53
+msgctxt "time"
+msgid "at"
+msgstr "plkst."
+
+#: .\templates\bookings\book_confirm.html:22
+#: .\templates\bookings\client_bookings.html:38
+#: .\templates\businesses\service_confirm_delete.html:13
+#: .\templates\businesses\service_form.html:20
+#: .\templates\businesses\staff_confirm_delete.html:18
+#: .\templates\businesses\staff_form.html:22
+#: .\templates\businesses\staff_schedule.html:27
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: .\templates\bookings\book_datetime.html:4
+msgid "Pick a time"
+msgstr "Izvēlēties laiku"
+
+#: .\templates\bookings\book_datetime.html:8
+msgid "with"
+msgstr "pie"
+
+#: .\templates\bookings\book_datetime.html:9
+msgid "Step 3 of 3 — pick a date and time"
+msgstr "3. solis no 3 — izvēlieties datumu un laiku"
+
+#: .\templates\bookings\book_datetime.html:12
+msgid "Date"
+msgstr "Datums"
+
+#: .\templates\bookings\book_datetime.html:21
+msgid "Loading…"
+msgstr "Ielādē…"
+
+#: .\templates\bookings\book_datetime.html:22
+msgid "No available slots on that day."
+msgstr "Šajā dienā nav pieejamu laiku."
+
+#: .\templates\bookings\book_datetime.html:23
+msgid "Could not load slots. Try again."
+msgstr "Neizdevās ielādēt laikus. Mēģiniet vēlreiz."
+
+#: .\templates\bookings\book_datetime.html:24
+msgid "Pick a date to see available slots."
+msgstr "Izvēlieties datumu, lai redzētu pieejamos laikus."
+
+#: .\templates\bookings\book_datetime.html:27
+msgid "Back to staff"
+msgstr "Atpakaļ pie darbiniekiem"
+
+#: .\templates\bookings\book_service.html:4
+#: .\templates\bookings\book_service.html:8
+#, python-format
+msgid "Book at %(name)s"
+msgstr "Rezervēt vietā %(name)s"
+
+#: .\templates\bookings\book_service.html:9
+msgid "Step 1 of 3 — pick a service"
+msgstr "1. solis no 3 — izvēlieties pakalpojumu"
+
+#: .\templates\bookings\book_service.html:23
+msgid "This business hasn't added any services yet."
+msgstr "Šis uzņēmums vēl nav pievienojis nevienu pakalpojumu."
+
+#: .\templates\bookings\book_staff.html:4
+msgid "Pick a staff member"
+msgstr "Izvēlieties darbinieku"
+
+#: .\templates\bookings\book_staff.html:8
+msgctxt "place"
+msgid "at"
+msgstr "pie"
+
+#: .\templates\bookings\book_staff.html:9
+msgid "Step 2 of 3 — pick a staff member"
+msgstr "2. solis no 3 — izvēlieties darbinieku"
+
+#: .\templates\bookings\book_staff.html:26
+msgid "Works"
+msgstr "Strādā"
+
+#: .\templates\bookings\book_staff.html:26
+msgid "(no days set)"
+msgstr "(dienas nav norādītas)"
+
+#: .\templates\bookings\book_staff.html:35
+msgid "No staff available yet."
+msgstr "Vēl nav pieejamu darbinieku."
+
+#: .\templates\bookings\book_staff.html:38
+msgid "Back to services"
+msgstr "Atpakaļ pie pakalpojumiem"
+
+#: .\templates\bookings\book_success.html:4
+#: .\templates\bookings\book_success.html:8
+msgid "Booking confirmed"
+msgstr "Rezervācija apstiprināta"
+
+#: .\templates\bookings\book_success.html:9
+msgid "You're booked in."
+msgstr "Jūs esat pierakstīts."
+
+#: .\templates\bookings\book_success.html:17
+msgid "View my bookings"
+msgstr "Skatīt manas rezervācijas"
+
+#: .\templates\bookings\book_success.html:18
+msgid "Back home"
+msgstr "Atpakaļ uz sākumu"
+
+#: .\templates\bookings\client_bookings.html:14
+#: .\templates\bookings\staff_appointments.html:16
+#: .\templates\bookings\staff_appointments.html:44
+msgid "When"
+msgstr "Kad"
+
+#: .\templates\bookings\client_bookings.html:15
+#: .\templates\bookings\staff_appointments.html:17
+#: .\templates\bookings\staff_appointments.html:45
+msgid "Service"
+msgstr "Pakalpojums"
+
+#: .\templates\bookings\client_bookings.html:17
+msgid "Business"
+msgstr "Uzņēmums"
+
+#: .\templates\bookings\client_bookings.html:18
+#: .\templates\bookings\staff_appointments.html:19
+#: .\templates\bookings\staff_appointments.html:47
+msgid "Status"
+msgstr "Statuss"
+
+#: .\templates\bookings\client_bookings.html:47
+msgid "You don't have any bookings yet."
+msgstr "Jums vēl nav neviena rezervācija."
+
+#: .\templates\bookings\staff_appointments.html:4
+#: .\templates\bookings\staff_appointments.html:8
+#: .\templates\businesses\staff_dashboard.html:12
+msgid "My appointments"
+msgstr "Mani pieraksti"
+
+#: .\templates\bookings\staff_appointments.html:11
+msgid "Upcoming"
+msgstr "Gaidāmie"
+
+#: .\templates\bookings\staff_appointments.html:36
+msgid "No upcoming appointments."
+msgstr "Nav gaidāmu pierakstu."
+
+#: .\templates\bookings\staff_appointments.html:39
+msgid "Recent past"
+msgstr "Nesenā pagātne"
+
+#: .\templates\bookings\staff_appointments.html:64
+msgid "No past appointments."
+msgstr "Nav iepriekšēju pierakstu."
+
+#: .\templates\bookings\staff_appointments.html:67
+msgid "Back to my area"
+msgstr "Atpakaļ uz manu sadaļu"
+
+#: .\templates\businesses\business_form.html:4
+#: .\templates\businesses\business_form.html:8
+msgid "Create your business"
+msgstr "Izveidot savu uzņēmumu"
+
+#: .\templates\businesses\business_form.html:9
+msgid ""
+"Pick a category — a starter set of services will be added automatically."
+msgstr ""
+"Izvēlieties kategoriju — automātiski tiks pievienots sākotnējais pakalpojumu "
+"komplekts."
+
+#: .\templates\businesses\business_form.html:20
+msgid "Create business"
+msgstr "Izveidot uzņēmumu"
+
+#: .\templates\businesses\dashboard.html:12
+msgid "Manage services"
+msgstr "Pārvaldīt pakalpojumus"
+
+#: .\templates\businesses\dashboard.html:13
+msgid "Manage staff"
+msgstr "Pārvaldīt darbiniekus"
+
+#: .\templates\businesses\service_confirm_delete.html:4
+#, python-format
+msgid "Delete %(name)s"
+msgstr "Dzēst %(name)s"
+
+#: .\templates\businesses\service_confirm_delete.html:8
+msgid "Delete service"
+msgstr "Dzēst pakalpojumu"
+
+#: .\templates\businesses\service_confirm_delete.html:9
+#, python-format
+msgid "Are you sure you want to delete <strong>%(name)s</strong>?"
+msgstr "Vai tiešām vēlaties dzēst <strong>%(name)s</strong>?"
+
+#: .\templates\businesses\service_confirm_delete.html:12
+#: .\templates\businesses\service_list.html:31
+msgid "Delete"
+msgstr "Dzēst"
+
+#: .\templates\businesses\service_form.html:4
+#: .\templates\businesses\service_form.html:8
+msgid "Edit service"
+msgstr "Rediģēt pakalpojumu"
+
+#: .\templates\businesses\service_form.html:4
+#: .\templates\businesses\service_form.html:8
+msgid "New service"
+msgstr "Jauns pakalpojums"
+
+#: .\templates\businesses\service_form.html:19
+msgid "Save"
+msgstr "Saglabāt"
+
+#: .\templates\businesses\service_list.html:4
+#: .\templates\businesses\service_list.html:9
+msgid "Services"
+msgstr "Pakalpojumi"
+
+#: .\templates\businesses\service_list.html:10
+msgid "+ New service"
+msgstr "+ Jauns pakalpojums"
+
+#: .\templates\businesses\service_list.html:17
+#: .\templates\businesses\staff_list.html:18
+msgid "Name"
+msgstr "Nosaukums"
+
+#: .\templates\businesses\service_list.html:19
+msgid "Duration"
+msgstr "Ilgums"
+
+#: .\templates\businesses\service_list.html:30
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: .\templates\businesses\service_list.html:38
+msgid "No services yet."
+msgstr "Vēl nav neviena pakalpojuma."
+
+#: .\templates\businesses\service_list.html:41
+#: .\templates\businesses\staff_list.html:42
+msgid "Back to dashboard"
+msgstr "Atpakaļ uz vadības paneli"
+
+#: .\templates\businesses\staff_confirm_delete.html:4
+msgid "Remove staff"
+msgstr "Noņemt darbinieku"
+
+#: .\templates\businesses\staff_confirm_delete.html:8
+msgid "Remove staff member"
+msgstr "Noņemt darbinieku"
+
+#: .\templates\businesses\staff_confirm_delete.html:10
+#, python-format
+msgid ""
+"\n"
+"        Are you sure you want to remove <strong>%(name)s</strong>?\n"
+"        Their login account will also be deleted.\n"
+"        "
+msgstr ""
+"\n"
+"        Vai tiešām vēlaties noņemt <strong>%(name)s</strong>?\n"
+"        Viņa pieteikšanās konts arī tiks dzēsts.\n"
+"        "
+
+#: .\templates\businesses\staff_confirm_delete.html:17
+#: .\templates\businesses\staff_list.html:32
+msgid "Remove"
+msgstr "Noņemt"
+
+#: .\templates\businesses\staff_dashboard.html:8
+#, python-format
+msgid "Hi, %(name)s"
+msgstr "Sveiks, %(name)s"
+
+#: .\templates\businesses\staff_dashboard.html:10
+#, python-format
+msgid "You work at <strong>%(business)s</strong>."
+msgstr "Jūs strādājat <strong>%(business)s</strong>."
+
+#: .\templates\businesses\staff_dashboard.html:13
+#: .\templates\businesses\staff_schedule.html:4
+#: .\templates\businesses\staff_schedule.html:8
+msgid "My schedule"
+msgstr "Mans grafiks"
+
+#: .\templates\businesses\staff_dashboard.html:16
+msgid ""
+"No staff profile is linked to your account yet — ask the business owner."
+msgstr ""
+"Jūsu kontam vēl nav pievienots darbinieka profils — jautājiet uzņēmuma "
+"īpašniekam."
+
+#: .\templates\businesses\staff_form.html:4
+#: .\templates\businesses\staff_form.html:21
+msgid "Add staff"
+msgstr "Pievienot darbinieku"
+
+#: .\templates\businesses\staff_form.html:8
+msgid "Add a staff member"
+msgstr "Pievienot darbinieku"
+
+#: .\templates\businesses\staff_form.html:9
+msgid "A new login account will be created for this person."
+msgstr "Šai personai tiks izveidots jauns pieteikšanās konts."
+
+#: .\templates\businesses\staff_list.html:10
+msgid "+ Add staff"
+msgstr "+ Pievienot darbinieku"
+
+#: .\templates\businesses\staff_list.html:20
+msgid "Hours"
+msgstr "Stundas"
+
+#: .\templates\businesses\staff_list.html:29
+msgid "(none set)"
+msgstr "(nav norādīts)"
+
+#: .\templates\businesses\staff_list.html:39
+msgid "No staff yet."
+msgstr "Vēl nav darbinieku."
+
+#: .\templates\businesses\staff_schedule.html:9
+msgid "Pick the days you work and your daily hours."
+msgstr "Izvēlieties darba dienas un dienas darba stundas."
+
+#: .\templates\businesses\staff_schedule.html:12
+msgid "Current photo"
+msgstr "Pašreizējais foto"
+
+#: .\templates\businesses\staff_schedule.html:26
+msgid "Save schedule"
+msgstr "Saglabāt grafiku"
+
+#: .\templates\home.html:4
+msgid "Sprout — Home"
+msgstr "Sprout — Sākums"
+
+#: .\templates\home.html:8
+msgid "Welcome to Sprout"
+msgstr "Laipni lūdzam Sprout"
+
+#: .\templates\home.html:9
+msgid "Appointment booking for small beauty businesses."
+msgstr "Pierakstu rezervēšana maziem skaistumkopšanas uzņēmumiem."
+
+#: .\templates\home.html:12
+msgid "Sign up as a client"
+msgstr "Reģistrēties kā klients"
+
+#: .\templates\home.html:13
+msgid "Register a business"
+msgstr "Reģistrēt uzņēmumu"
+
+#: .\templates\home.html:15
+msgid "Already have an account? Login"
+msgstr "Jau ir konts? Pieteikties"
+
+#: .\templates\home.html:17
+#, python-format
+msgid "Hello, %(name)s."
+msgstr "Sveiks, %(name)s."
+
+msgid "Browse businesses"
+msgstr "Pārlūkot uzņēmumus"
+
+msgid "No businesses are registered yet."
+msgstr "Vēl nav reģistrēts neviens uzņēmums."
+
+msgid "Appointment Booking"
+msgstr "Pierakstu rezervēšana"
+
+msgid "Appointment Booking — Home"
+msgstr "Pierakstu rezervēšana — Sākums"
+
+msgid "Welcome to Appointment Booking"
+msgstr "Laipni lūdzam Pierakstu rezervēšanā"
+
+msgid "Appointment Booking admin"
+msgstr "Pierakstu rezervēšanas administrācija"

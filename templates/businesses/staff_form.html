@@ -1,11 +1,12 @@
 ﻿{% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Register" %} — Appointment Booking{% endblock %}
+{% block title %}{% trans "Add staff" %} — Appointment Booking{% endblock %}
 
 {% block content %}
 <section class="auth-card">
-    <h1>{{ heading|default:_("Create an account") }}</h1>
+    <h1>{% trans "Add a staff member" %}</h1>
+    <p class="muted">{% trans "A new login account will be created for this person." %}</p>
     <form method="post" novalidate>
         {% csrf_token %}
         {{ form.non_field_errors }}
@@ -17,8 +18,8 @@
                 {{ field.errors }}
             </div>
         {% endfor %}
-        <button type="submit" class="button">{% trans "Register" %}</button>
+        <button type="submit" class="button">{% trans "Add staff" %}</button>
+        <a class="button button-secondary" href="{% url 'businesses:staff_list' %}">{% trans "Cancel" %}</a>
     </form>
-    <p>{% trans "Already have an account?" %} <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a></p>
 </section>
 {% endblock %}

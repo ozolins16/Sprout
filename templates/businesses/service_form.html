@@ -1,10 +1,11 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}{% if mode == 'edit' %}Edit{% else %}New{% endif %} service — Sprout{% endblock %}
+{% block title %}{% if mode == 'edit' %}{% trans "Edit service" %}{% else %}{% trans "New service" %}{% endif %} — Appointment Booking{% endblock %}
 
 {% block content %}
 <section class="auth-card">
-    <h1>{% if mode == 'edit' %}Edit service{% else %}New service{% endif %}</h1>
+    <h1>{% if mode == 'edit' %}{% trans "Edit service" %}{% else %}{% trans "New service" %}{% endif %}</h1>
     <form method="post" novalidate>
         {% csrf_token %}
         {{ form.non_field_errors }}
@@ -15,8 +16,8 @@
                 {{ field.errors }}
             </div>
         {% endfor %}
-        <button type="submit" class="button">Save</button>
-        <a class="button button-secondary" href="{% url 'businesses:service_list' %}">Cancel</a>
+        <button type="submit" class="button">{% trans "Save" %}</button>
+        <a class="button button-secondary" href="{% url 'businesses:service_list' %}">{% trans "Cancel" %}</a>
     </form>
 </section>
 {% endblock %}

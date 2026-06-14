@@ -1,19 +1,38 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Sprout — Home{% endblock %}
+{% block title %}{% trans "Appointment Booking — Home" %}{% endblock %}
 
 {% block content %}
 <section class="hero">
-    <h1>Welcome to Sprout</h1>
-    <p>Appointment booking for small beauty businesses.</p>
+    <h1>{% trans "Welcome to Appointment Booking" %}</h1>
+    <p>{% trans "Appointment booking for small beauty businesses." %}</p>
     {% if not user.is_authenticated %}
         <p>
-            <a class="button" href="{% url 'accounts:register' %}">Sign up as a client</a>
-            <a class="button button-secondary" href="{% url 'accounts:register_owner' %}">Register a business</a>
+            <a class="button" href="{% url 'accounts:register' %}">{% trans "Sign up as a client" %}</a>
+            <a class="button button-secondary" href="{% url 'accounts:register_owner' %}">{% trans "Register a business" %}</a>
         </p>
-        <p><a href="{% url 'accounts:login' %}">Already have an account? Login</a></p>
+        <p><a href="{% url 'accounts:login' %}">{% trans "Already have an account? Login" %}</a></p>
     {% else %}
-        <p>Hello, {{ user.first_name|default:user.username }}.</p>
+        <p>{% blocktrans with name=user.first_name|default:user.username %}Hello, {{ name }}.{% endblocktrans %}</p>
+    {% endif %}
+</section>
+
+<section class="businesses-directory">
+    <h2>{% trans "Browse businesses" %}</h2>
+    {% if businesses %}
+        <ul class="card-list">
+            {% for biz in businesses %}
+                <li>
+                    <a class="card" href="{% url 'bookings:book_service' biz.id %}">
+                        <span class="card-title">{{ biz.name }}</span>
+                        <span class="card-meta">{{ biz.get_category_display }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="muted">{% trans "No businesses are registered yet." %}</p>
     {% endif %}
 </section>
 {% endblock %}

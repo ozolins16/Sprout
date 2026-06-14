@@ -1,6 +1,20 @@
+from datetime import time
+
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+
+DAY_CHOICES = [
+    ('0', _('Monday')),
+    ('1', _('Tuesday')),
+    ('2', _('Wednesday')),
+    ('3', _('Thursday')),
+    ('4', _('Friday')),
+    ('5', _('Saturday')),
+    ('6', _('Sunday')),
+]
+DAY_LABELS = dict(DAY_CHOICES)
 
 
 class Business(models.Model):
@@ -61,6 +75,49 @@ DEFAULT_SERVICES: dict[str, list[tuple[str, str, int]]] = {
         ('Gel Extensions', '45.00', 90),
     ],
 }
+
+
+class Staff(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='staff_profile',
+    )
+    business = models.ForeignKey(
+        Business,
+        on_delete=models.CASCADE,
+        related_name='staff',
+    )
+    bio = models.TextField(_('bio'), blank=True)
+    photo = models.ImageField(
+        _('photo'),
+        upload_to='staff_photos/',
+        blank=True,
+        null=True,
+    )
+    working_days = models.CharField(
+        _('working days'),
+        max_length=20,
+        default='0,1,2,3,4',
+        help_text=_('Comma-separated day numbers: 0=Monday … 6=Sunday'),
+    )
+    start_time = models.TimeField(_('start time'), default=time(9, 0))
+    end_time = models.TimeField(_('end time'), default=time(18, 0))
+
+    class Meta:
+        verbose_name = _('staff member')
+        verbose_name_plural = _('staff')
+
+    def __str__(self) -> str:
+        return f'{self.user.get_full_name() or self.user.username} @ {self.business.name}'
+
+    def working_day_numbers(self) -> list[int]:
+        if not self.working_days:
+            return []
+        return [int(d) for d in self.working_days.split(',') if d.strip().isdigit()]
+
+    def working_days_display(self) -> str:
+        return ', '.join(str(DAY_LABELS[str(n)]) for n in self.working_day_numbers())
 
 
 def seed_default_services(business: Business) -> None:

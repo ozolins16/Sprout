@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Staff" %} — {{ business.name }}{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="dashboard-header">
+        <h1>{% trans "Staff" %}</h1>
+        <a class="button" href="{% url 'businesses:staff_create' %}">{% trans "+ Add staff" %}</a>
+    </div>
+
+    {% if staff_members %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>{% trans "Username" %}</th>
+                    <th>{% trans "Name" %}</th>
+                    <th>{% trans "Working days" %}</th>
+                    <th>{% trans "Hours" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staff_members %}
+                    <tr>
+                        <td>{{ staff.user.username }}</td>
+                        <td>{{ staff.user.get_full_name|default:'—' }}</td>
+                        <td>{{ staff.working_days_display|default:_("(none set)") }}</td>
+                        <td>{{ staff.start_time|time:"H:i" }}–{{ staff.end_time|time:"H:i" }}</td>
+                        <td class="row-actions">
+                            <a class="danger-link" href="{% url 'businesses:staff_delete' staff.pk %}">{% trans "Remove" %}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "No staff yet." %}</p>
+    {% endif %}
+
+    <p><a href="{% url 'businesses:dashboard' %}">&larr; {% trans "Back to dashboard" %}</a></p>
+</section>
+{% endblock %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Dashboard — {{ business.name }}{% endblock %}
+{% block title %}{% trans "Dashboard" %} — {{ business.name }}{% endblock %}
 
 {% block content %}
 <section class="dashboard">
@@ -8,8 +9,8 @@
     <p class="muted">{{ business.get_category_display }}</p>
 
     <ul class="dashboard-links">
-        <li><a class="button" href="{% url 'businesses:service_list' %}">Manage services</a></li>
-        <li><span class="button button-secondary disabled">Manage staff (Day 3)</span></li>
+        <li><a class="button" href="{% url 'businesses:service_list' %}">{% trans "Manage services" %}</a></li>
+        <li><a class="button" href="{% url 'businesses:staff_list' %}">{% trans "Manage staff" %}</a></li>
     </ul>
 </section>
 {% endblock %}

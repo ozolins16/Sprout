@@ -1,0 +1,50 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My bookings" %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <h1>{% trans "My bookings" %}</h1>
+
+    {% if appointments %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>{% trans "When" %}</th>
+                    <th>{% trans "Service" %}</th>
+                    <th>{% trans "Staff" %}</th>
+                    <th>{% trans "Business" %}</th>
+                    <th>{% trans "Status" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in appointments %}
+                    <tr>
+                        <td>{{ a.start_datetime|date:"D, j M Y" }} {% trans "at" context "time" %} {{ a.start_datetime|time:"H:i" }}</td>
+                        <td>{{ a.service.name }}</td>
+                        <td>{{ a.staff.user.get_full_name|default:a.staff.user.username }}</td>
+                        <td>{{ a.staff.business.name }}</td>
+                        <td>
+                            <span class="status status-{{ a.status }}">{{ a.get_status_display }}</span>
+                        </td>
+                        <td class="row-actions">
+                            {% if a.status == 'confirmed' and a.start_datetime > now %}
+                                <form method="post"
+                                      action="{% url 'bookings:client_booking_cancel' a.pk %}"
+                                      class="inline-form">
+                                    {% csrf_token %}
+                                    <button type="submit" class="link-button danger-link">{% trans "Cancel" %}</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "You don't have any bookings yet." %}</p>
+    {% endif %}
+</section>
+{% endblock %}

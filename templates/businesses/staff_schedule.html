@@ -1,0 +1,30 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My schedule" %} — Appointment Booking{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+    <h1>{% trans "My schedule" %}</h1>
+    <p class="muted">{% trans "Pick the days you work and your daily hours." %}</p>
+    {% if staff.photo %}
+        <div class="profile-photo">
+            <img src="{{ staff.photo.url }}" alt="{% trans 'Current photo' %}">
+        </div>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="form-row">
+                <label>{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}<small>{{ field.help_text|safe }}</small>{% endif %}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="button">{% trans "Save schedule" %}</button>
+        <a class="button button-secondary" href="{% url 'staff:dashboard' %}">{% trans "Cancel" %}</a>
+    </form>
+</section>
+{% endblock %}

@@ -1,4 +1,4 @@
-﻿asgiref==3.11.1
+asgiref==3.11.1
 certifi==2026.5.20
 charset-normalizer==3.4.7
 Django==5.1.15
@@ -11,3 +11,8 @@ sqlparse==0.5.5
 typing_extensions==4.15.0
 tzdata==2026.2
 urllib3==2.7.0
+
+# --- Production-only ---
+gunicorn==23.0.0
+whitenoise==6.7.0
+mysqlclient==2.2.4 ; sys_platform != "win32"

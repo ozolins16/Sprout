@@ -1,31 +1,51 @@
-{% load static %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Sprout{% endblock %}</title>
+    <title>{% block title %}{% trans "Appointment Booking" %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
     <header class="site-header">
         <div class="container">
-            <a class="logo" href="{% url 'home' %}">Sprout</a>
+            <a class="logo" href="{% url 'home' %}">{% trans "Appointment Booking" %}</a>
             <nav class="site-nav">
-                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'home' %}">{% trans "Home" %}</a>
                 {% if user.is_authenticated %}
                     {% if user.is_owner %}
-                        <a href="{% url 'businesses:dashboard' %}">Dashboard</a>
+                        <a href="{% url 'businesses:dashboard' %}">{% trans "Dashboard" %}</a>
+                    {% elif user.is_staff_member %}
+                        <a href="{% url 'staff:dashboard' %}">{% trans "My area" %}</a>
+                    {% elif user.is_client %}
+                        <a href="{% url 'bookings:client_bookings' %}">{% trans "My bookings" %}</a>
                     {% endif %}
                     <span class="user-label">{{ user.username }} ({{ user.get_role_display }})</span>
                     <form method="post" action="{% url 'accounts:logout' %}" class="inline-form">
                         {% csrf_token %}
-                        <button type="submit" class="link-button">Logout</button>
+                        <button type="submit" class="link-button">{% trans "Logout" %}</button>
                     </form>
                 {% else %}
-                    <a href="{% url 'accounts:login' %}">Login</a>
-                    <a href="{% url 'accounts:register' %}">Register</a>
+                    <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
+                    <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a>
                 {% endif %}
+
+                <form action="{% url 'set_language' %}" method="post" class="lang-switcher">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                    {% get_available_languages as LANGUAGES %}
+                    {% for lang_code, lang_name in LANGUAGES %}
+                        <button type="submit" name="language" value="{{ lang_code }}"
+                                class="lang-button {% if lang_code == LANGUAGE_CODE %}active{% endif %}">
+                            {{ lang_code|upper }}
+                        </button>
+                    {% endfor %}
+                </form>
             </nav>
         </div>
     </header>
